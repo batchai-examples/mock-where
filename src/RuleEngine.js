@@ -64,6 +64,9 @@ module.exports = class RuleEngine {
     }
 
     static determineTimeToLatency(ruleResponse) {
+        if (!ruleResponse) {
+            return 0; // Return 0 if ruleResponse is not defined
+        }
         let latency = ruleResponse.latency + ruleResponse.latencyFix;
         if (latency && latency > 0) {
             return latency;
